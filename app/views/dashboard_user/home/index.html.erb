@@ -2,3 +2,32 @@
   <div class="user_name">Olá seja bem vindo <b><%= current_user.name %></b></div>
   <div class="user_balance">Saldo atual: <b><%= real(@account.balance) %></b></div>
 </div>
+<br>
+<h3>Transações Recentes</h3>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Valor</th>
+      <th>Data</th>
+      <th>Ações</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |trx| %>
+      <tr>
+        <td><%= trx.name %></td>
+        <td><%= trx.kind == 'money_deposit' ? "Depósito" : "Saque" %></td>
+        <td><%= real(trx.value) %></td>
+        <td><%= trx.created_at.to_s(:date_time_env_specific) %></td>
+        <td>
+          <%= link_to 'Ver', trx, class: "btn btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

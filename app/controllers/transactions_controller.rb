@@ -41,7 +41,7 @@ class TransactionsController < ApplicationController
           format.html { redirect_to new_transaction_path, notice: "Você não pode Sacar um valor maior que o da sua Conta!" }
         end
       else
-        trx = create_transaction("Saque no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}", 0, value)
+        trx = create_transaction("Saque no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}", 1, value)
         @account.update(balance: @account.balance - value)
         respond_to do |format|
           format.html { redirect_to transaction_path(trx.id), notice: "Transação realizada com sucesso!" }

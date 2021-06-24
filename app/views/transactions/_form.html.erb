@@ -14,7 +14,11 @@
   <div class="row">
     <div class="col-md-6">
       <%= form.label :kind %>
-      <%= form.select(:kind, [['Depósito', 0], ['Saque', 1]], {}, class: "form-control") %>
+      <% if @account.balance == 0.0 %>
+        <%= form.select(:kind, [['Depósito', 0]], {}, class: "form-control") %>
+      <% else %>
+        <%= form.select(:kind, [['Depósito', 0], ['Saque', 1]], {}, class: "form-control") %>
+      <% end %>
     </div>
 
     <div class="col-md-6">

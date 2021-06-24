@@ -6,3 +6,9 @@ pt-BR:
         update: "Atualizar %{model}"
         edit: "Etidar %{model}"
         destroy: "Apagar %{model}"
+
+      transaction:
+        create: "Criar %{model}"
+        update: "Atualizar %{model}"
+        edit: "Etidar %{model}"
+        destroy: "Apagar %{model}"

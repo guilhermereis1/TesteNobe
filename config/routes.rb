@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :dashboard_user do
+    get 'extract/index'
+  end
   resources :transactions
   namespace :dashboard_user do
     get 'home/index'
