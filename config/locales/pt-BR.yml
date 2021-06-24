@@ -34,7 +34,7 @@ pt-BR:
         <<: *attributes
         name: Nome Completo
         email: Email
-        cpf: CPF
+        cpf_or_cnpj: CPF ou CNPJ
 
     errors:
       messages:
