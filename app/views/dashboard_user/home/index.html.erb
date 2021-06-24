@@ -1,2 +1,4 @@
-<h1>Olá seja bem vindo <%= current_user.name %></h1>
-<h2>Saldo atual: <%= real(@account.balance) %></h2>
+<div class="user_info">
+  <div class="user_name">Olá seja bem vindo <b><%= current_user.name %></b></div>
+  <div class="user_balance">Saldo atual: <b><%= real(@account.balance) %></b></div>
+</div>

@@ -1,3 +1,12 @@
 // Place all the styles related to the DashboardUser/home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.user_info {
+  background-color: #ededed;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.user_name {
+  font-size: 30px;
+}
