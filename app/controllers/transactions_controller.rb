@@ -45,7 +45,7 @@ class TransactionsController < ApplicationController
 
         if value > @account.balance then
           respond_to do |format|
-            format.html { redirect_to new_transaction_path, notice: "Ooppss... Você não pode Sacar um valor maior que o da sua Conta!" }
+            format.html { redirect_to new_transaction_path, notice: "Oops... Você não pode Sacar um valor maior que o da sua Conta!" }
           end
         else
           create_transaction(@transaction, transaction_params[:value].to_d, transaction_params[:kind].to_i)
