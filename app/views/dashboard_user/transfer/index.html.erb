@@ -1,3 +1,11 @@
+<% if !notice.nil? %>
+  <div class="alert alert-secondary" role="alert">
+    <h4 class="alert-heading">Atenção</h4>
+    <hr>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
 <div>
   <h1 class="text-center">Transferência</h1>
   <%= form_tag dashboard_user_transfer_index_path, local: true, method: :get do %>
@@ -24,11 +32,8 @@
         </div>
       </div>
       <br>
-      <%= submit_tag "Buscar Usuário", class: "btn btn-success"%>
+      <%= submit_tag "Buscar Usuário", class: "btn btn-success"%> | <%= link_to 'Limpar', dashboard_user_transfer_index_path, class: "btn btn-secondary" %>
     <% end %>
-    
-    <br>
-    <%= link_to 'Limpar', dashboard_user_transfer_index_path, class: "btn btn-secondary" %>
   <% end %>
 
   <% if @data[:error] then %>
@@ -51,3 +56,12 @@
     <%= submit_tag "Fazer Transferência", class: "btn btn-success"%>
   <% end %>
 <% end %>
+
+<br>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Info</h4>
+  <p>De <b>Segunda</b> a <b>Sexta</b> das <b>09:00</b> às <b>18:00</b> horas a Taxa por transferência é de: <b><%= real(5.0) %></b></p>
+  <hr>
+  <p class="mb-0">Fora desse horário a taxa é <b><%= real(7.0) %></b> reais</p>
+  <p class="mb-0">Acima de <b><%= real(1000.0) %></b> há um adicional de <b><%= real(10.0) %></b> na taxa!</p>
+</div>

@@ -21,8 +21,8 @@
     <% @transactions.each do |trx| %>
       <tr>
         <td><%= trx.name %></td>
-        <td><%= trx.kind == 'money_deposit' ? "Depósito" : "Saque" %></td>
         <td><%= real(trx.value) %></td>
+        <td><%= trx.tax == 0.0 ? 'Sem Taxa' : real(trx.tax) %></td>
         <td><%= trx.created_at.to_s(:date_time_env_specific) %></td>
         <td>
           <%= link_to 'Ver', trx, class: "btn btn-primary" %>

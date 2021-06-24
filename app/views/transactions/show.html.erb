@@ -6,7 +6,8 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">Valor: <b><%= real(@transaction.value) %></b></h5>
-    <p class="card-text">Descrição: <b><%= @transaction.name %></b> </p>
+    <h6 class="card-title">Taxa: <b><%= real(@transaction.tax) %></b></h6>
+    <p class="card-text">Descrição: <b><%= @transaction.name %></b></p>
     <%= link_to 'Voltar', transactions_path, class: "btn btn-secondary" %>
   </div>
 </div>
