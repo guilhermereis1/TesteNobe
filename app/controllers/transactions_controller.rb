@@ -42,7 +42,6 @@ class TransactionsController < ApplicationController
           end
         end
       elsif kind == 1 then
-
         if value > @account.balance then
           respond_to do |format|
             format.html { redirect_to new_transaction_path, notice: "Oops... Você não pode Sacar um valor maior que o da sua Conta!" }
