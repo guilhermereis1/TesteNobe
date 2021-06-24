@@ -15,7 +15,10 @@ gem 'devise'
 gem 'cpf_cnpj'
 gem 'i18n'
 
+
 group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rexml', '~> 3.2', '>= 3.2.4'
   gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
