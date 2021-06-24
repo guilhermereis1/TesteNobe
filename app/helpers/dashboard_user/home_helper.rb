@@ -1,0 +1,2 @@
+module DashboardUser::HomeHelper
+end

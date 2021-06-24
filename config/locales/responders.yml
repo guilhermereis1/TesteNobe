@@ -1,0 +1,12 @@
+pt-BR:
+  flash:
+    actions:
+      create:
+        notice: '%{resource_name} foi criado(a) com sucesso.'
+        alert: Oops... corrija os erros do formulário antes de prosseguir.
+      update:
+        notice: '%{resource_name} foi atualizado(a) com sucesso.'
+        alert: Oops... corrija os erros do formulário antes de prosseguir.
+      destroy:
+        notice: '%{resource_name} foi removido(a) com sucesso.'
+        alert: '%{resource_name} não pode ser removido(a).'

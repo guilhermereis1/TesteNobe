@@ -1,0 +1,43 @@
+pt-BR:
+  users:
+    statuses:
+      active: Ativo
+      inactive: Inativo
+  activerecord:
+    common:
+      models: &models
+        user: Usuário
+
+      attributes: &attributes
+        <<: *models
+        id: ID
+        created_at: Criado Em
+        updated_at: Atualizado Em
+        started_at: Conta Iniciada Em
+        encrypted_password: Senha Criptografada
+        password: Senha
+        password_confirmation: Confirmação da Senha
+        avatar_image: Imagem de Avatar
+        remove_avatar_image: Excluir Imagem
+        statuses:
+          pending: Pendente
+          confirmed: Confirmado
+          waiting: Aguardando Pagamento
+          cancelled: Pedido Cancelado
+          out_of_stock: Pedido fora de Estoque
+
+    models:
+      <<: *models
+
+    attributes:
+      user:
+        <<: *attributes
+        name: Nome Completo
+        email: Email
+        cpf: CPF
+
+    errors:
+      messages:
+        required: Campo requerido
+        invalid_currency: valor monetário inválido
+        not_enough_period: conta muito recente para gerar relatório
