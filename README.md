@@ -8,7 +8,7 @@
 ● Realizar Depósitos - [x]
 ● Realizar Saques - [x]
 ● Realizar Transferências entre Contas
-● Solicitar Saldo
+● Solicitar Saldo [x]
 ● Solicitar Extrato Filtrando por Data Início e Final
 
 #### Regras:

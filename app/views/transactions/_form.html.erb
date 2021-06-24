@@ -1,7 +1,7 @@
 <%= form_with(model: transaction) do |form| %>
   <% if transaction.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+      <h2><%= pluralize(transaction.errors.count, "Erros") %> Não deixou que a transação fosse concluída!</h2>
 
       <ul>
         <% transaction.errors.each do |error| %>
@@ -23,7 +23,7 @@
 
     <div class="col-md-6">
       <%= form.label :value %>
-      <%= form.text_field :value, class: "form-control" %>
+      <%= form.text_field :value, class: "form-control", placeholder: "Ex: 30.0" %>
     </div>
   </div>
 

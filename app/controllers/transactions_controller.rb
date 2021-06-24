@@ -24,28 +24,46 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
+    @transaction = Transaction.new()
+    @transaction.kind = transaction_params[:kind].to_i
+    @transaction.account_id = @account.id
+
     kind = transaction_params[:kind].to_i
     value = transaction_params[:value].to_i
 
-    if kind == 0 then
-      trx = create_transaction("Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}", 0, value)
-      @account.update(balance: @account.balance + value)
+      if kind == 0 then
+        @transaction.name = "Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
+        @transaction.value = value
+        @account.update(balance: @account.balance + value)
 
-      respond_to do |format|
-        format.html { redirect_to transaction_path(trx.id), notice: "Transação realizada com sucesso!" }
-        format.json { render :show, status: :created, location: @transaction }
-      end
-    elsif kind == 1 then
-      if value > @account.balance then
         respond_to do |format|
-          format.html { redirect_to new_transaction_path, notice: "Você não pode Sacar um valor maior que o da sua Conta!" }
+          if @transaction.save
+            format.html { redirect_to @transaction, notice: "Criado!" }
+            format.json { render :show, status: :created, location: @transaction }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @transaction.errors, status: :unprocessable_entity }
+          end
         end
-      else
-        trx = create_transaction("Saque no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}", 1, value)
-        @account.update(balance: @account.balance - value)
-        respond_to do |format|
-          format.html { redirect_to transaction_path(trx.id), notice: "Transação realizada com sucesso!" }
-          format.json { render :show, status: :created, location: @transaction }
+      elsif kind == 1 then
+
+        if value > @account.balance then
+          respond_to do |format|
+            format.html { redirect_to new_transaction_path, notice: "Você não pode Sacar um valor maior que o da sua Conta!" }
+          end
+        else
+          @transaction.name = "Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
+          @transaction.value = value
+          @account.update(balance: @account.balance - value)
+          
+          respond_to do |format|
+          if @transaction.save
+            format.html { redirect_to @transaction, notice: "Criado!" }
+            format.json { render :show, status: :created, location: @transaction }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @transaction.errors, status: :unprocessable_entity }
+          end
         end
       end
     end
