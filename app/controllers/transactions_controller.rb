@@ -18,10 +18,6 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new
   end
 
-  # GET /transactions/1/edit
-  def edit
-  end
-
   # POST /transactions or /transactions.json
   def create
     @transaction = Transaction.new() 
@@ -59,15 +55,6 @@ class TransactionsController < ApplicationController
           end
         end
       end
-    end
-  end
-
-  # DELETE /transactions/1 or /transactions/1.json
-  def destroy
-    @transaction.destroy
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transação deletada com sucesso!" }
-      format.json { head :no_content }
     end
   end
 
