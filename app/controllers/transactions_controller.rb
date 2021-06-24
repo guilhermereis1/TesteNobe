@@ -24,21 +24,17 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    @transaction = Transaction.new()
-    @transaction.kind = transaction_params[:kind].to_i
-    @transaction.account_id = @account.id
+    @transaction = Transaction.new() 
 
     kind = transaction_params[:kind].to_i
-    value = transaction_params[:value].to_i
+    value = transaction_params[:value].to_d
 
       if kind == 0 then
-        @transaction.name = "Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
-        @transaction.value = value
-        @account.update(balance: @account.balance + value)
+        create_transaction(@transaction, value, kind)
 
         respond_to do |format|
           if @transaction.save
-            format.html { redirect_to @transaction, notice: "Criado!" }
+            format.html { redirect_to @transaction, notice: "Transação criada com sucesso!" }
             format.json { render :show, status: :created, location: @transaction }
           else
             format.html { render :new, status: :unprocessable_entity }
@@ -49,35 +45,20 @@ class TransactionsController < ApplicationController
 
         if value > @account.balance then
           respond_to do |format|
-            format.html { redirect_to new_transaction_path, notice: "Você não pode Sacar um valor maior que o da sua Conta!" }
+            format.html { redirect_to new_transaction_path, notice: "Ooppss... Você não pode Sacar um valor maior que o da sua Conta!" }
           end
         else
-          @transaction.name = "Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
-          @transaction.value = value
-          @account.update(balance: @account.balance - value)
-          
+          create_transaction(@transaction, transaction_params[:value].to_d, transaction_params[:kind].to_i)
+
           respond_to do |format|
           if @transaction.save
-            format.html { redirect_to @transaction, notice: "Criado!" }
+            format.html { redirect_to @transaction, notice: "Transação criada com sucesso!" }
             format.json { render :show, status: :created, location: @transaction }
           else
             format.html { render :new, status: :unprocessable_entity }
             format.json { render json: @transaction.errors, status: :unprocessable_entity }
           end
         end
-      end
-    end
-  end
-
-  # PATCH/PUT /transactions/1 or /transactions/1.json
-  def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: "Transação atualizada com sucesso!" }
-        format.json { render :show, status: :ok, location: @transaction }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,14 +73,26 @@ class TransactionsController < ApplicationController
   end
 
   private
-    def create_transaction(name, kind, value)
-      Transaction.create!(
-        name: name,
-        kind: kind,
-        value: value,
-        account_id: @account.id
-      )
+    def update_balance(value)
+      @account.update(balance: value)
     end
+
+    def create_transaction(trx, value, kind)
+      trx.account_id = @account.id
+      trx.kind = kind
+
+      if kind == 0 then
+        trx.name = "Depósito no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
+        update_balance(@account.balance + value)
+      elsif kind == 1 then
+        trx.name = "Saque no valor de: #{number_to_currency(value, :unit => "R$ ", :separator => ",", :delimiter => ".")}"
+        update_balance(@account.balance - value)
+      end
+
+      trx.value = value
+      trx
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])
