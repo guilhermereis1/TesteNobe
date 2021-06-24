@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Valor</th>
+      <th>Ações</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.name %></td>
+        <td><%= transaction.kind == 'money_deposit' ? "Depósito" : "Saque" %></td>
+        <td><%= real(transaction.value) %></td>
+        <td>
+          <%= link_to 'Ver', transaction, class: "btn btn-primary" %> | <%= link_to 'Apagar', transaction, method: :delete, data: { confirm: 'Tem certeza disso?' }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Transação', new_transaction_path, class: "btn btn-success" %>

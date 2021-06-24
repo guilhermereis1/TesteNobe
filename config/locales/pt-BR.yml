@@ -7,6 +7,7 @@ pt-BR:
     common:
       models: &models
         user: Usuário
+        transaction: Transação
 
       attributes: &attributes
         <<: *models
@@ -35,6 +36,11 @@ pt-BR:
         name: Nome Completo
         email: Email
         cpf_or_cnpj: CPF ou CNPJ
+
+      transaction:
+        <<: *attributes
+        kind: Tipo
+        value: Valor
 
     errors:
       messages:
