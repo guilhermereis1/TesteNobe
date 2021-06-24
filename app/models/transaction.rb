@@ -13,7 +13,7 @@
 class Transaction < ApplicationRecord
   belongs_to :account
 
-  enum kind: { money_deposit: 0, outgoing_money: 1 }
+  enum kind: { money_deposit: 0, outgoing_money: 1, transfer: 2 }
 
   with_options presence: true do
     validates :kind

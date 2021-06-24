@@ -1,0 +1,53 @@
+<div>
+  <h1 class="text-center">Transferência</h1>
+  <%= form_tag dashboard_user_transfer_index_path, local: true, method: :get do %>
+    <% if @user then %>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Nome</label>
+          <input type="text" value="<%= @user.name %>" disabled class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label>Email</label>
+          <input type="text" value="<%= @user.email %>" disabled class="form-control">
+        </div>
+        <div class="col-md-12">
+          <label>CPF/CNPJ</label>
+          <input type="text" value="<%= @user.cpf_or_cnpj %>" disabled class="form-control">
+        </div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Para</label>
+          <%= text_field_tag :cpf_or_cnpj, "", class: "form-control", placeholder: "Digite o CPF ou CNPJ do recebedor" %>
+        </div>
+      </div>
+      <br>
+      <%= submit_tag "Buscar Usuário", class: "btn btn-success"%>
+    <% end %>
+    
+    <br>
+    <%= link_to 'Limpar', dashboard_user_transfer_index_path, class: "btn btn-secondary" %>
+  <% end %>
+
+  <% if @data[:error] then %>
+    <br>
+    <div class="alert alert-secondary" role="alert">
+      <%= @data[:message] %>
+    </div>
+  <% end %>
+</div>
+
+<% if @user then %>
+  <%= form_tag dashboard_user_make_transfer_path(@user.id), local: true, method: :post do %>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Valor</label>
+        <%= text_field_tag :value, "", class: "form-control", placeholder: "Digite o valor que deseja Transfêrir ex: 200.0" %>
+      </div>
+    </div>
+    <br>
+    <%= submit_tag "Fazer Transferência", class: "btn btn-success"%>
+  <% end %>
+<% end %>
