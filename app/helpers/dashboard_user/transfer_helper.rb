@@ -1,0 +1,2 @@
+module DashboardUser::TransferHelper
+end
