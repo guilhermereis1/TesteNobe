@@ -24,7 +24,7 @@
         <td><%= trx.tax == 0.0 ? 'Sem Taxa' : real(trx.tax) %></td>
         <td><%= trx.created_at.to_s(:date_time_env_specific) %></td>
         <td>
-          <%= link_to 'Ver', trx, class: "btn btn-primary" %> | <%= link_to 'Apagar', trx, method: :delete, data: { confirm: 'Tem certeza disso?' }, class: "btn btn-danger" %>
+          <%= link_to 'Ver', trx, class: "btn btn-primary" %>
         </td>
       </tr>
     <% end %>
