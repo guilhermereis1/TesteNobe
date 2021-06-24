@@ -23,11 +23,11 @@
 
 #### Necessidade Técnica
 
-● Hospedar a aplicação no Heroku
-● Versionar o código com Git
-● Fazer testes unitários e de aceitação com Rspec
-● Técnicas de refactoring e clean code
-● Boas práticas em Ruby e Rails
+● Hospedar a aplicação no Heroku = https://testenobe.herokuapp.com
+● Versionar o código com Git = https://github.com/guilhermereis1/TesteNobe
+● Fazer testes unitários e de aceitação com Rspec = [x]
+● Técnicas de refactoring e clean code = [x]
+● Boas práticas em Ruby e Rails = [x]
 
 #### O que será analisado
 
