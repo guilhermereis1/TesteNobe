@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Transactions</h1>
+<h1>Transações (<%= @transactions.count %>)</h1>
 
 <table class="table">
   <thead>
@@ -8,19 +8,21 @@
       <th>Descrição</th>
       <th>Tipo</th>
       <th>Valor</th>
+      <th>Data</th>
       <th>Ações</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @transactions.each do |transaction| %>
+    <% @transactions.each do |trx| %>
       <tr>
-        <td><%= transaction.name %></td>
-        <td><%= transaction.kind == 'money_deposit' ? "Depósito" : "Saque" %></td>
-        <td><%= real(transaction.value) %></td>
+        <td><%= trx.name %></td>
+        <td><%= trx.kind == 'money_deposit' ? "Depósito" : "Saque" %></td>
+        <td><%= real(trx.value) %></td>
+        <td><%= trx.created_at.to_s(:date_time_env_specific) %></td>
         <td>
-          <%= link_to 'Ver', transaction, class: "btn btn-primary" %> | <%= link_to 'Apagar', transaction, method: :delete, data: { confirm: 'Tem certeza disso?' }, class: "btn btn-danger" %>
+          <%= link_to 'Ver', trx, class: "btn btn-primary" %> | <%= link_to 'Apagar', trx, method: :delete, data: { confirm: 'Tem certeza disso?' }, class: "btn btn-danger" %>
         </td>
       </tr>
     <% end %>
