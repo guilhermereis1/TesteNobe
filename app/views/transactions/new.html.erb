@@ -1,0 +1,12 @@
+<% if !notice.nil? %>
+  <div class="alert alert-danger" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
+<h1>Nova Transação</h1>
+<p>Saldo atual: <b><%= real(@account.balance) %></b> </p>
+
+<%= render 'form', transaction: @transaction %>
+
+<%= link_to 'Voltar', transactions_path, class: "btn btn-secondary" %>

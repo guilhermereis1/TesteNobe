@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   namespace :dashboard_user do
     get 'home/index'
   end

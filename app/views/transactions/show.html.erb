@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card">
+  <div class="card-header">
+    Tipo - <b><%= @transaction.kind == 'money_deposit' ? "Depósito" : "Saque" %></b>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Valor: <b><%= real(@transaction.value) %></b></h5>
+    <p class="card-text">Descrição: <b><%= @transaction.name %></b> </p>
+    <%= link_to 'Voltar', transactions_path, class: "btn btn-secondary" %> | <%= link_to 'Editar', edit_transaction_path(@transaction), class: "btn btn-warning" %>
+  </div>
+</div>

@@ -5,7 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  cpf_or_cnpj            :string           not null
 #  name                   :string           not null
-#  status                 :integer          default(0), not null
+#  status                 :integer          default("opened"), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string

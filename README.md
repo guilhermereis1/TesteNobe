@@ -4,17 +4,17 @@
 
 #### A aplicação trata as movimentações que um cliente pode fazer ao chegar no caixa de um banco. O cliente pode fazer:
 
-● Cadastrar, Editar e Encerrar sua Conta
-● Realizar Depósitos
-● Realizar Saques
+● Cadastrar, Editar e Encerrar sua Conta - [x]
+● Realizar Depósitos - [x]
+● Realizar Saques - [x]
 ● Realizar Transferências entre Contas
 ● Solicitar Saldo
 ● Solicitar Extrato Filtrando por Data Início e Final
 
 #### Regras:
 
-● Uma conta não pode ser excluída
-● Para realizar saques e transferências é necessário autenticar o usuário
+● Uma conta não pode ser excluída - [x]
+● Para realizar saques e transferências é necessário autenticar o usuário - [x]
 ● O saldo de uma conta nunca pode ficar negativo
 ● Taxa de transferência:
 ○ De segunda a sexta das 9 às 18 horas a taxa é 5 reais por transferência
