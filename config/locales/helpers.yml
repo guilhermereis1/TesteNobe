@@ -1,0 +1,8 @@
+pt-BR:
+  helpers:
+    submit:
+      product:
+        create: "Criar %{model}"
+        update: "Atualizar %{model}"
+        edit: "Etidar %{model}"
+        destroy: "Apagar %{model}"

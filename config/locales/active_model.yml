@@ -1,0 +1,46 @@
+pt-BR:
+  errors:
+    format: ! '%{attribute} %{message}'
+    attributes:
+      contacts_default:
+        too_short: não foi preenchido
+    messages:
+      accepted: deve ser aceito
+      blank: Não pode ficar em branco
+      present: Deve ficar em branco
+      confirmation: Não é igual a %{attribute}
+      empty: Não pode ficar vazio
+      equal_to: Deve ser igual a %{count}
+      even: Deve ser par
+      exclusion: Não está disponível
+      greater_than: Deve ser maior que %{count}
+      greater_than_or_equal_to: Deve ser maior ou igual a %{count}
+      inclusion: Não está incluído na lista
+      invalid: Não é válido
+      invalid_email_address: Não parece ser um endereço válido de e-mail
+      email_address_not_routable: Não é roteável
+      less_than: Deve ser menor que %{count}
+      less_than_or_equal_to: Deve ser menor ou igual a %{count}
+      not_a_number: Não é um número
+      not_an_integer: Não é um número inteiro
+      odd: Deve ser ímpar
+      record_invalid: ! 'A validação falhou: %{errors}'
+      restrict_dependent_destroy:
+        one: "Não é possível excluir o registro pois existe um %{record} dependente"
+        many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      taken: Já está em uso
+      too_long: ! 'É muito longo (máximo: %{count} caracteres)'
+      too_short: ! 'É muito curto (mínimo: %{count} caracteres)'
+      wrong_length: Não possui o tamanho esperado (%{count} caracteres)
+      other_than: "Deve ser diferente de %{count}"
+      download_failed: Não pode ser baixado
+      invalid_extension: Extensão inválida
+      invalid_content_type: Tipo de conteúdo inválido
+      too_large: Muito grande
+      denied: Não é aceito
+      improbable_phone: Número de telefone inválido
+    template:
+      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: ! 'Não foi possível gravar %{model}: 1 erro'
+        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
