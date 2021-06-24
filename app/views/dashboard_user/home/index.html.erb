@@ -1,4 +1,2 @@
 <h1>Olá seja bem vindo <%= current_user.name %></h1>
 <h2>Saldo atual: <%= real(@account.balance) %></h2>
-
-<%= link_to('Sair', destroy_user_session_path, method: :delete, class: "") %>
