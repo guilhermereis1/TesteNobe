@@ -8,7 +8,9 @@
 <% end %>
 
 <h1>Nova Transação</h1>
-<p>Saldo atual: <b><%= real(@account.balance) %></b> </p>
+<div class="alert alert-success" role="alert">
+  Saldo atual: <b><%= real(@account.balance) %></b>
+</div>
 
 <%= render 'form', transaction: @transaction %>
 
