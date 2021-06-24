@@ -10,7 +10,7 @@ class DashboardUser::TransferController < ApplicationController
     if cpf_or_cnpj.present? then
       user = User.find_by(cpf_or_cnpj: cpf_or_cnpj)
 
-      if user.present? then
+      if user.present? && user.id.to_i != current_user.id.to_i then
         @user = user
       else
         @user = nil
@@ -30,8 +30,8 @@ class DashboardUser::TransferController < ApplicationController
     receiver = Account.find_by(user_id: user.id)
     tax = verify_date(Date.today.strftime('%A'), value)
 
-    if value.present? != 0.0 && user.present? then
-      if value > (@account.balance + tax) then
+    if value.present? != 0.0 && user.present? && user.id.to_i != current_user.id.to_i then
+      if (value.to_d + tax) > @account.balance then
         respond_to do |format|
           format.html { redirect_to dashboard_user_transfer_index_path, notice: "Você não possui Saldo suficiente para estra Transferência!" }
         end
