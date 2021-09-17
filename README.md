@@ -1,4 +1,4 @@
-# TESTE NOBE
+# TESTE
 
 ### Necessidade Negocial
 
@@ -23,8 +23,8 @@
 
 #### Necessidade Técnica
 
-● Hospedar a aplicação no Heroku = https://testenobe.herokuapp.com
-● Versionar o código com Git = https://github.com/guilhermereis1/TesteNobe
+● Hospedar a aplicação no Heroku = 
+● Versionar o código com Git = 
 ● Fazer testes unitários e de aceitação com Rspec = [x]
 ● Técnicas de refactoring e clean code = [x]
 ● Boas práticas em Ruby e Rails = [x]
@@ -35,8 +35,3 @@
 ○ Os requisitos pedidos nos testes ○ O layout
 ○ A qualidade do código
 ○ Os testes automatizados
-
-#### A Entrega
-
-● Enviar o código por email em um arquivo zip (contendo os arquivos de versionamento do git)
-Favor enviar o teste para o e-mail: diretoria.comercial@nobesistemas.com.br
